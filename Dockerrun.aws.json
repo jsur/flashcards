@@ -1,0 +1,32 @@
+{
+  "AWSEBDockerrunVersion": 2,
+  "containerDefinitions": [
+    {
+      "name": "client",
+      "image": "jsur/flashcards-client",
+      "hostname": "client",
+      "essential": false
+    },
+    {
+      "name": "server",
+      "image": "jsur/flashcards-server",
+      "hostname": "api",
+      "essential": false
+    },
+    {
+      "name": "nginx",
+      "image": "jsur/flashcards-nginx",
+      "essential": true,
+      "portMappings": [
+        {
+          "hostPort": 80,
+          "containerPort": 80
+        }
+      ],
+      "links": [
+        "client",
+        "server"
+      ]
+    }
+  ]
+}
