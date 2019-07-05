@@ -7,25 +7,12 @@ import Header from './components/Header'
 import Container from './elements/Container'
 
 const Home = () => {
-  const [flashSet, setValues] = useState({
+  const [flashSet] = useState({
     name: '',
     flashPairs: [
       { id: 1, term: '', definition: '' },
     ],
   })
-
-  const addFlashPairs = (e, key) => {
-    setValues({
-      ...flashSet,
-      flashPairs: {
-        ...flashSet.flashPairs,
-        [key]: {
-          ...flashSet.flashPairs[key],
-          term: e.target.value,
-        },
-      },
-    })
-  }
 
   return (
     <Router>
@@ -35,7 +22,6 @@ const Home = () => {
           <CardPair
             term={ flashSet.flashPairs[0].term }
             definition={ flashSet.flashPairs[0].definition }
-            addFlashPairs={ addFlashPairs }
           />
         </Container>
       </Layout>
