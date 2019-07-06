@@ -5,18 +5,21 @@
       "name": "client",
       "image": "jsur/flashcards-client",
       "hostname": "client",
-      "essential": false
+      "essential": false,
+      "memory": 64
     },
     {
       "name": "server",
       "image": "jsur/flashcards-server",
       "hostname": "api",
-      "essential": false
+      "essential": false,
+      "memory": 64
     },
     {
       "name": "nginx",
       "image": "jsur/flashcards-nginx",
       "essential": true,
+      "memory": 64,
       "portMappings": [
         {
           "hostPort": 80,

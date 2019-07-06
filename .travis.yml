@@ -18,3 +18,16 @@ after_success:
   - docker push jsur/flashcards-client
   - docker push jsur/flashcards-nginx
   - docker push jsur/flashcards-server
+
+deploy:
+  provider: elasticbeanstalk
+  region: us-east-1
+  app: flashcards
+  env: Flashcards-env
+  bucket_name: elasticbeanstalk-us-east-1-566312720731
+  bucket_path: flashcards
+  on:
+    branch: master
+  access_key_id: $AWS_ACCESS_KEY
+  secret_access_key:
+    secure: $AWS_SECRET_KEY
