@@ -9,7 +9,7 @@ import { purpleGradient, textColor } from '../styles/variables'
 
 const CardWrapper = styled.div`
   display: flex;
-  padding: 6rem 0;
+  margin: 2.5rem 0;
   align-items: space-between:
   ${media.phone`flex-direction: column;`};
 `
@@ -25,9 +25,13 @@ const CreateCard = styled(Card)`
 `
 
 const TermCard = styled(CreateCard)`
+  max-height: ${props => (props.selected ? '13rem' : '1rem')};
+  transition: max-height 0.5s cubic-bezier(0, 1, 0, 1);
 `
 
 const DefCard = styled(CreateCard)`
+  max-height: ${props => (props.selected ? '13rem' : '1rem')};
+  transition: max-height 0.5s cubic-bezier(0, 1, 0, 1);
   background: ${purpleGradient}
 `
 const TextArea = styled.textarea`
@@ -48,22 +52,39 @@ const DefInput = styled(TextArea)`
   color: white;
 `
 
-const CardPair = ({ term, definition, index }) => (
+const CardPair = ({
+  id, term, definition, handleTermChange, handleDefinitionChange, handleKeyPress, selected,
+}) => (
   <CardWrapper>
-    <TermCard>
-      <TermInput type="text" name={ term } />
+    <TermCard selected={ selected }>
+      <TermInput
+        type="text"
+        name={ term }
+        defaultValue={ term }
+        onChange={ () => handleTermChange(id)}
+        onKeyPress={ handleKeyPress }
+      />
     </TermCard>
-    <DefCard index={ index }>
-      <DefInput type="text" name={ definition } />
+    <DefCard selected={ selected }>
+      <DefInput
+        type="text"
+        name={ definition }
+        defaultValue={ definition }
+        onChange={ () => handleDefinitionChange(id)}
+        onKeyPress={ handleKeyPress }
+      />
     </DefCard>
   </CardWrapper>
 )
 
 CardPair.propTypes = {
-  children: PropTypes.oneOfType([
-    PropTypes.arrayOf(PropTypes.node),
-    PropTypes.node,
-  ])
+  id: PropTypes.number,
+  term: PropTypes.string,
+  definition: PropTypes.string,
+  handleTermChange: PropTypes.func,
+  handleDefinitionChange: PropTypes.func,
+  handleKeyPress: PropTypes.func,
+  selected: PropTypes.bool,
 }
 
 export default CardPair

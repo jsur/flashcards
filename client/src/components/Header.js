@@ -10,12 +10,16 @@ const HeaderWrapper = styled.div`
   background-color: white;
   box-shadow: ${headerShadow};
   position: relative;
-  padding: 2rem 0 1rem 0;
+  padding: 1rem 0 1rem 0;
+  margin-bottom: 6rem;
+`
+
+const PositionedGoogleSignIn = styled(GoogleSignIn)`
 `
 
 const Header = ({ title }) => (
   <HeaderWrapper>
-    <GoogleSignIn />
+    <PositionedGoogleSignIn />
     <Heading1> { title }</Heading1>
   </HeaderWrapper>
 )
