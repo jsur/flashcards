@@ -2,7 +2,6 @@ import React from 'react'
 import styled from 'styled-components'
 import PropTypes from 'prop-types'
 
-import AuthContextProvider from './AuthContextProvider'
 import Heading1 from '../elements/Heading1'
 import GoogleSignIn from './GoogleSignIn'
 import { headerShadow } from '../styles/variables'
@@ -15,12 +14,10 @@ const HeaderWrapper = styled.div`
 `
 
 const Header = ({ title }) => (
-  <AuthContextProvider>
-    <HeaderWrapper>
-      <GoogleSignIn />
-      <Heading1> { title }</Heading1>
-    </HeaderWrapper>
-  </AuthContextProvider>
+  <HeaderWrapper>
+    <GoogleSignIn />
+    <Heading1> { title }</Heading1>
+  </HeaderWrapper>
 )
 
 Header.propTypes = {
