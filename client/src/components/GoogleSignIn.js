@@ -1,4 +1,5 @@
 import * as React from 'react'
+import axios from 'axios'
 import { withAuthContext } from './AuthContextProvider'
 
 class GoogleSignIn extends React.Component {
@@ -28,12 +29,15 @@ class GoogleSignIn extends React.Component {
     const googleUser = {
       name: profile.getName(),
       imageUrl: profile.getImageUrl(),
+      email: profile.getEmail(),
       idToken: userObj.getAuthResponse().id_token
     }
-    this.props.auth.setAuthState({
-      ...this.props.auth,
-      googleUser
-    })
+    axios.post('/api/v1/user/login', { idToken: googleUser.idToken, email: googleUser.email })
+      .then(res => {
+        console.log(res.data)
+        this.props.auth.setAuthState({ ...this.props.auth, googleUser })
+      })
+      .catch(error => console.log('error in login!', error))
   }
 
   onSignOut = () => {
