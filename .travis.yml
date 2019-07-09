@@ -24,10 +24,10 @@ after_success:
 
 deploy:
   provider: elasticbeanstalk
-  region: us-east-1
+  region: eu-central-1
   app: flashcards
   env: Flashcards-env
-  bucket_name: elasticbeanstalk-us-east-1-566312720731
+  bucket_name: elasticbeanstalk-eu-central-1-798786445217
   bucket_path: flashcards
   on:
     branch: master
