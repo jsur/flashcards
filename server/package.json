@@ -6,7 +6,7 @@
     "google-auth-library": "^4.2.5",
     "nodemon": "1.19.1",
     "pg": "7.11.0",
-    "sequelize": "^5.9.4"
+    "sequelize": "^5.15.1"
   },
   "scripts": {
     "dev": "nodemon",
